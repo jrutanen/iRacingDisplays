@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>ui/main.qml</file>
+        <file>ui/PositionList.qml</file>
+        <file>ui/SpeedoMeter.qml</file>
+        <file>ui/Top.qml</file>
+        <file>ui/InstrumentNeedle.qml</file>
+        <file>ui/RpmMeter.qml</file>
+        <file>ui/WindSock.qml</file>
+    </qresource>
+</RCC>
