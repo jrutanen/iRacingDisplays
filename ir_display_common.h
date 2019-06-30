@@ -8,6 +8,11 @@
 #define RACE 2
 #define MAX_DRIVERS 64
 
+enum IRacingState {
+  offline,
+  online
+};
+
 enum Skies {
   clear,
   partlyCloudy,
@@ -29,7 +34,7 @@ struct PositionItem
 {
   int position;
   QString name;
-  float time;
+  QString time;
   int carIdx;
   int lap;
   int change;

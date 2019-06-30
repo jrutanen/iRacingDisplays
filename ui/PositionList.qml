@@ -10,6 +10,9 @@ Item
     id: positions
     width: parent.width
     height: parent.height
+    anchors.right: parent.right
+    anchors.rightMargin: 15
+
 
 //    Gradient {
 //        id: bgGradient
@@ -29,19 +32,56 @@ Item
         GradientStop { position: 0.94; color: "red" }
         GradientStop { position: 1.0; color: "black" }
     }
+//    Gradient {
+//        id: positionGradient
+//        GradientStop { position: 0.0; color: "black" }
+//        GradientStop { position: 0.2; color: "#333333" }
+//        GradientStop { position: 0.75; color: "#333333" }
+//        GradientStop { position: 0.88; color: "#666666" }
+//        GradientStop { position: 0.94; color: "#333333" }
+//        GradientStop { position: 1.0; color: "black" }
+//    }
     Gradient {
         id: positionGradient
-        GradientStop { position: 0.0; color: "black" }
-        GradientStop { position: 0.2; color: "#333333" }
-        GradientStop { position: 0.75; color: "#333333" }
-        GradientStop { position: 0.88; color: "#666666" }
-        GradientStop { position: 0.94; color: "#333333" }
+        GradientStop { position: 0.0; color: "#333333" }
+//        GradientStop { position: 0.2; color: "#333333" }
+//        GradientStop { position: 0.75; color: "#333333" }
+//        GradientStop { position: 0.88; color: "#666666" }
+//        GradientStop { position: 0.94; color: "#333333" }
         GradientStop { position: 1.0; color: "black" }
+    }
+    Rectangle {
+        id: positionAndLapInfo
+        gradient: positionGradient
+        width: parent.width
+        border.color: "#666666"
+        border.width: 1
+        height: 40
+        anchors.left: parent.left
+        anchors.top: parent.top
+        Text {
+            objectName: "LapInfo"
+            id: lapInfo
+            property var totalLaps: 1
+            property var currentLap: 1
+            property var lapInfoText: "LAP " + currentLap + " / " + totalLaps
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
+            font: theme.subTitleFont
+            color: "white"
+            text: lapInfoText;
+            function lapChanged (current, total) {
+                //console.log("lapChanged called");
+                currentLap = current;
+                totalLaps = total;
+                lapInfoText = "LAP " + currentLap + "/" + totalLaps;
+            }
+        }
     }
     Component {
         id: resultRow
         Item {
-            property var rowHeight: 30
+            property var rowHeight: 40
             property var columnMargin: 5
             property var textMargin: 13
             property var cornerRadius: 8
@@ -52,8 +92,10 @@ Item
 
             Rectangle {
                 id: driverPosition
-                width: 45; height: rowHeight
-                radius: cornerRadius
+                width: 50; height: rowHeight
+                border.color: "#666666"
+                border.width: 1
+//                radius: cornerRadius
                 antialiasing: true
                 gradient: rowColor
                 anchors.left: parent.left
@@ -70,12 +112,15 @@ Item
             }
             Rectangle {
                 id: driverName
-                width: 240; height: rowHeight
-                radius: cornerRadius
+                width: 295; height: rowHeight
+                border.color: "#666666"
+                border.width: 1
+//                radius: cornerRadius
                 antialiasing: true
                 gradient: rowColor
                 anchors.left: driverPosition.right
                 anchors.leftMargin: columnMargin
+                anchors.rightMargin: columnMargin
 
                 Text {
                     anchors.left: parent.left
@@ -91,8 +136,10 @@ Item
 
             Rectangle {
                 id: driverTime
-                width: 95; height: rowHeight
-                radius: cornerRadius
+                width: 145; height: rowHeight
+                border.color: "#666666"
+                border.width: 1
+//                radius: cornerRadius
                 antialiasing: true
                 anchors.left: driverName.right
                 anchors.leftMargin: columnMargin
@@ -106,7 +153,7 @@ Item
                     horizontalAlignment: Text.AlignRight
                     font: theme.rowFont
                     color: "white"
-                    text: model.time.toFixed(3)
+                    text: model.time
                 }
             }
         }
@@ -117,13 +164,13 @@ Item
         id: positionsList
         clip: true
         orientation: Qt.Vertical
-        width: parent.width - 10
-        height: parent.height
-        anchors.top: parent.top
-//        anchors.horizontalCenter: parent.horizontalCenter
-        spacing: 2
+        width: parent.width
+        height: parent.height - 47
+        anchors.top: positionAndLapInfo.bottom
+        anchors.topMargin: 5
+        spacing: 5
 
-        model: PositionModel {
+        model: PositionModel {            
             list: positionList
         }
         delegate: resultRow

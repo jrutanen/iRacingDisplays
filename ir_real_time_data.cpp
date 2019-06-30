@@ -2,7 +2,8 @@
 #include "ir_real_time_data.h"
 #include "ir_display_common.h"
 #include <algorithm>
-#include <Windows.h>
+//#include <Windows.h>
+#include <stringapiset.h>
 
 IrRealTimeData::IrRealTimeData()
 {
@@ -25,6 +26,35 @@ QString IrRealTimeData::getDriverName(int carIdx)
     name = windows1252toQString(tstr);
   }
   return name;
+}
+
+QString IrRealTimeData::timeToString(float timeInSec)
+{
+  QString timeString;
+  int minutes = static_cast<int>(timeInSec / 60);
+  float seconds = timeInSec - (60 * minutes);
+  if (minutes == 0)
+  {
+    timeString.append("00:");
+  }
+  else {
+    timeString.append("0");
+    timeString.append(minutes);
+    timeString.append(":");
+  }
+  if (seconds == 0)
+  {
+    timeString.append("00.000");
+  }
+  else
+  {
+    if (seconds < 10.0f)
+    {
+      timeString.append("0");
+    }
+    timeString.append(QString::number(seconds, 'f', 3));
+  }
+  return timeString;
 }
 
 LapInfo IrRealTimeData::getLapInfo()
@@ -75,7 +105,7 @@ void IrRealTimeData::updateRaceData()
         driver.position = position;
         driver.name = driverName;
         driver.lap = driverLap;
-        driver.time = driverGap;
+        driver.time = timeToString(driverGap);
         driver.carIdx = i;
         this->positions.append(driver);
       }

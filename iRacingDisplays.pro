@@ -13,6 +13,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+        ir_connection.cpp \
         irsdk1.13/irsdk_client.cpp \
         irsdk1.13/irsdk_utils.cpp \
         irsdk1.13/yaml_parser.cpp \
@@ -38,6 +39,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
+  ir_connection.h \
   irsdk1.13/irsdk_client.h \
   irsdk1.13/irsdk_defines.h \
   irsdk1.13/yaml_parser.h \
@@ -56,6 +58,8 @@ DISTFILES += \
   ui/SpeedoMeter.qml \
   ui/Top.qml \
   ui/WindSock.qml \
+  ui/images/helmet.png \
+  ui/images/skippy.png \
   ui/main.qml
 
 LIBS += -lKernel32

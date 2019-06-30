@@ -29,6 +29,7 @@ private:
   int carCount = 0;
   bool weathedDataUpdated;
   QString getDriverName(int carIdx);
+  QString timeToString(float timeInSec);
   int nrOfElements(int idx);
   float kilometersPerHour(float metersPerSecond);
   void sortPositions();

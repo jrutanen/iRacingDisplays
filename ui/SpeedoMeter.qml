@@ -5,7 +5,7 @@ import QtQuick.Shapes 1.12
 
 Item
 {
-    id: speedometer
+    id: speedoMeter
     RadialGradient {
         id: bgSpeedometer
         GradientStop { position: 0.0; color: "black" }

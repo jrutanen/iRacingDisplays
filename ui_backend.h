@@ -5,6 +5,7 @@
 #include <QVariant>
 #include "ir_display_common.h"
 #include "ir_real_time_data.h"
+#include "ir_connection.h"
 
 class UiBackend : public QObject
 {
@@ -12,8 +13,11 @@ class UiBackend : public QObject
 public:
   explicit UiBackend(QObject *parent = nullptr);
   void setRealTimeDataObject(IrRealTimeData *realTimeData);
+  void setIrConnectionObject(IrConnection *connection);
 
 signals:
+  void connected();
+  void disconnected();
 //  void trottleChanged(QVariant throttle);
   void speedChanged(QVariant speed);
   void rpmChanged(QVariant rpm);
@@ -25,6 +29,7 @@ public slots:
   void setData();
 
 private:
+  IrConnection *connection;
   IrRealTimeData *realTimeData;
   void setSpeed();
   void setRpm();

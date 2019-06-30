@@ -13,15 +13,15 @@ Item
     Rectangle {
         width: parent.width
         height: parent.height
-        color: "#99000000"
+        color: "#00000000"
 
-        RowLayout {
+        Rectangle {
             anchors.left: parent.left
             anchors.top: parent.top
             height: parent.height
             width: parent.width
             Rectangle {
-                id: drvierInfo
+                id: driverInfo
                 width: 400
                 height: parent.height
                 color: "#00000000"
@@ -60,26 +60,26 @@ Item
                     }
                 }
             }
-            Rectangle {
-                id: weatherInfo
-                width: 400
-                height: parent.height
-                color: "#00000000"
-                anchors.right: parent.right
-                WindSock {
-                    anchors.left: parent.left
-                    anchors.top: parent.top
-                }
-                Text {
-                    anchors.right: parent.right
-                    anchors.rightMargin: 125
-                    anchors.top: parent.top
-                    anchors.topMargin: subTitleMargin
-                    font: theme.subTitleFont
-                    color: "white"
-                    text: "TEMPERATURE"
-                }
-            }
+//            Rectangle {
+//                id: weatherInfo
+//                width: 400
+//                height: parent.height
+//                color: "#00000000"
+//                anchors.right: parent.right
+//                WindSock {
+//                    anchors.left: parent.left
+//                    anchors.top: parent.top
+//                }
+//                Text {
+//                    anchors.right: parent.right
+//                    anchors.rightMargin: 125
+//                    anchors.top: parent.top
+//                    anchors.topMargin: subTitleMargin
+//                    font: theme.subTitleFont
+//                    color: "white"
+//                    text: "TEMPERATURE"
+//                }
+//            }
         }
     }
 

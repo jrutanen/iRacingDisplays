@@ -1,5 +1,24 @@
 <RCC>
     <qresource prefix="/">
+        <file>ir_display_common.h</file>
+        <file>ir_real_time_data.cpp</file>
+        <file>ir_real_time_data.h</file>
+        <file>ir_session_data.cpp</file>
+        <file>ir_session_data.h</file>
+        <file>position_list.cpp</file>
+        <file>position_list.h</file>
+        <file>position_model.cpp</file>
+        <file>position_model.h</file>
+        <file>timer.cpp</file>
+        <file>timer.h</file>
+        <file>ui_backend.cpp</file>
+        <file>ui_backend.h</file>
+        <file>irsdk1.13/irsdk_client.cpp</file>
+        <file>irsdk1.13/irsdk_client.h</file>
+        <file>irsdk1.13/irsdk_defines.h</file>
+        <file>irsdk1.13/irsdk_utils.cpp</file>
+        <file>irsdk1.13/yaml_parser.cpp</file>
+        <file>irsdk1.13/yaml_parser.h</file>
         <file>ui/main.qml</file>
         <file>ui/PositionList.qml</file>
         <file>ui/SpeedoMeter.qml</file>
@@ -7,5 +26,8 @@
         <file>ui/InstrumentNeedle.qml</file>
         <file>ui/RpmMeter.qml</file>
         <file>ui/WindSock.qml</file>
+        <file>ui/images/helmet.png</file>
+        <file>ui/images/skippy.png</file>
+        <file>ui/WaitScreen.qml</file>
     </qresource>
 </RCC>

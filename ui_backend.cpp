@@ -12,11 +12,24 @@ void UiBackend::setRealTimeDataObject(IrRealTimeData *realTimeData)
   this->realTimeData = realTimeData;
 }
 
+void UiBackend::setIrConnectionObject(IrConnection *connection)
+{
+  this->connection = connection;
+}
+
 void UiBackend::setData()
 {
-  setSpeed();
-  setRpm();
-  setLapInfo();
+  if(connection->IsOnline())
+  {
+    emit connected();
+    setSpeed();
+    setRpm();
+    setLapInfo();
+  }
+  else
+  {
+    emit disconnected();
+  }
 }
 
 void UiBackend::setSpeed()
