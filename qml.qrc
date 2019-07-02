@@ -29,5 +29,6 @@
         <file>ui/images/helmet.png</file>
         <file>ui/images/skippy.png</file>
         <file>ui/WaitScreen.qml</file>
+        <file>ui/LapTimes.qml</file>
     </qresource>
 </RCC>

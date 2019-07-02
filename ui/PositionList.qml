@@ -23,14 +23,23 @@ Item
 //        GradientStop { position: 0.94; color: "#4c3015" }
 //        GradientStop { position: 1.0; color: "black" }
 //    }
+//    Gradient {
+//        id: bgGradient
+//        GradientStop { position: 0.0; color: "black" }
+//        GradientStop { position: 0.2; color: "red" }
+//        GradientStop { position: 0.75; color: "red" }
+//        GradientStop { position: 0.88; color: "#ffcccc" }
+//        GradientStop { position: 0.94; color: "red" }
+//        GradientStop { position: 1.0; color: "black" }
+//    }
     Gradient {
         id: bgGradient
-        GradientStop { position: 0.0; color: "black" }
-        GradientStop { position: 0.2; color: "red" }
-        GradientStop { position: 0.75; color: "red" }
-        GradientStop { position: 0.88; color: "#ffcccc" }
-        GradientStop { position: 0.94; color: "red" }
-        GradientStop { position: 1.0; color: "black" }
+        GradientStop { position: 0.0; color: "#ffcccc" }
+//        GradientStop { position: 0.2; color: "red" }
+//        GradientStop { position: 0.75; color: "red" }
+//        GradientStop { position: 0.88; color: "#ffcccc" }
+//        GradientStop { position: 0.94; color: "red" }
+        GradientStop { position: 1.0; color: "red" }
     }
 //    Gradient {
 //        id: positionGradient
@@ -52,10 +61,11 @@ Item
     }
     Rectangle {
         id: positionAndLapInfo
-        gradient: positionGradient
+//        gradient: positionGradient
+        color: "black"
         width: parent.width
-        border.color: "#666666"
-        border.width: 1
+        border.color: "black"
+        border.width: 0
         height: 40
         anchors.left: parent.left
         anchors.top: parent.top
@@ -79,6 +89,13 @@ Item
         }
     }
     Component {
+        id: highlightComponent
+        Rectangle {
+            width: ListView.view.width
+        }
+    }
+
+    Component {
         id: resultRow
         Item {
             property var rowHeight: 40
@@ -86,9 +103,11 @@ Item
             property var textMargin: 13
             property var cornerRadius: 8
             property var textPadding: 3
+            property int indexOfThisDelegate: index
             property var rowColor:
                 (model.name === "Jani Rutanen") ? bgGradient : positionGradient
             height: rowHeight
+            focus: (model.position === "10") ? true : false
 
             Rectangle {
                 id: driverPosition
@@ -165,11 +184,13 @@ Item
         clip: true
         orientation: Qt.Vertical
         width: parent.width
-        height: parent.height - 47
+        height: parent.height - 65
         anchors.top: positionAndLapInfo.bottom
         anchors.topMargin: 5
         spacing: 5
-
+        snapMode: ListView.SnapToItem
+        highlight: highlightComponent
+        focus: true
         model: PositionModel {            
             list: positionList
         }

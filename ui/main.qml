@@ -16,7 +16,6 @@ Window
     height: windowHeight
     visible: true
     x: 20; y: Screen.height - windowHeight - 20
-
 //    flags: Qt.WA_TranslucentBackground | Qt.FramelessWindowHint
 
     color: "#000000"
@@ -56,45 +55,51 @@ Window
         })
 
     }
+    RowLayout {
+        anchors.fill: parent
+        Item {
+            id:roomWebcam
+            Layout.preferredHeight: 300
+            Layout.preferredWidth: 500
+            Layout.maximumHeight: 300
+            Layout.maximumWidth: 500
+            Layout.alignment: Qt.AlignLeft
+            Layout.leftMargin: 0
+        }
 
-//    Button {
-//        objectName: "OverlayModeButton"
-//        signal overlayModeOn()
-//        anchors.centerIn: parent
-//        text: "Overlay Mode"
-//        onClicked: overlayModeOn()
-//    }
+        RpmMeter {
+            id: instrumentRpmMeter
+            Layout.preferredHeight: 300
+            Layout.preferredWidth: 135
+            Layout.maximumWidth: 135
+            Layout.alignment: Qt.AlignLeft
+            Layout.leftMargin: 0
+        }
 
-    PositionList {
-        x: 0; y: 0
-        width: 500
-        height: parent.height
-        anchors.right: parent.right
+        SpeedoMeter {
+            id: instrumentSpeedoMeter
+            Layout.preferredHeight: 300
+            Layout.preferredWidth: 135
+            Layout.maximumWidth: 135
+            Layout.alignment: Qt.AlignLeft
+        }
+
+        LapTimes {
+
+        }
+
+        PositionList {
+            Layout.preferredHeight: 300
+            Layout.minimumWidth: 500
+            Layout.maximumWidth: 500
+            Layout.alignment: Qt.AlignRight
+            height: parent.height
+        }
     }
 
-//    SpeedoMeter {
-//        id: instrumentSpeedoMeter
-//        anchors {
-//            left: parent.left
-//            bottom: parent.bottom
-//            leftMargin: 2000
-//            bottomMargin: 10
-//        }
-//        implicitWidth: 500
-//        implicitHeight: 300
-//    }
 
-//    RpmMeter {
-//        id: instrumentRpmMeter
-//        anchors {
-//            left: parent.left
-//            bottom: parent.bottom
-//            leftMargin: 1725
-//            bottomMargin: 10
-//        }
-//        implicitWidth: 500
-//        implicitHeight: 300
-//    }
+
+
 
 //    Top {
 //        width: parent.width

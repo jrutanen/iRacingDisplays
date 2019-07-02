@@ -51,13 +51,13 @@ int main(int argc, char *argv[])
 
   QObject *topLevel = engine.rootObjects().value(0);
 
-//  QObject *speedNeedle = qobject_cast<QObject*>(topLevel->findChild<QObject*>("SpeedoMeterNeedle"));
-//  QObject::connect(&uiBackend, SIGNAL(speedChanged(QVariant)),
-//                   speedNeedle, SLOT(speedChanged(QVariant)));
+  QObject *speedNeedle = qobject_cast<QObject*>(topLevel->findChild<QObject*>("SpeedoMeterNeedle"));
+  QObject::connect(&uiBackend, SIGNAL(speedChanged(QVariant)),
+                   speedNeedle, SLOT(speedChanged(QVariant)));
 
-//  QObject *rpmNeedle = qobject_cast<QObject*>(topLevel->findChild<QObject*>("RpmMeterNeedle"));
-//  QObject::connect(&uiBackend, SIGNAL(rpmChanged(QVariant)),
-//                   rpmNeedle, SLOT(rpmChanged(QVariant)));
+  QObject *rpmNeedle = qobject_cast<QObject*>(topLevel->findChild<QObject*>("RpmMeterNeedle"));
+  QObject::connect(&uiBackend, SIGNAL(rpmChanged(QVariant)),
+                   rpmNeedle, SLOT(rpmChanged(QVariant)));
 
   QObject *lapInfo = qobject_cast<QObject*>(topLevel->findChild<QObject*>("LapInfo"));
   QObject::connect(&uiBackend, SIGNAL(lapChanged(QVariant, QVariant)),
